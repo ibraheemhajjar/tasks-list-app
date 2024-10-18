@@ -11,6 +11,7 @@ const TaskList: React.FC<TaskListProps> = ({ tasks }) => {
          {tasks.map((task) => (
             <li key={task._id} className="p-2 bg-gray-100 rounded">
                <p className="text-sm">{task.description}</p>
+               <p className="text-xs text-gray-500">{task.status}</p>
             </li>
          ))}
       </ul>
