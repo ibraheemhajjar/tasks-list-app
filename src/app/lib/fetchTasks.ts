@@ -1,7 +1,7 @@
 import { TaskListResponse, FilterFindManyTaskInput } from "../types";
 import { GET_TASKS } from "./graphql/queries";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_URL = process.env.API_URL;
 
 export async function fetchTasks(filter: FilterFindManyTaskInput = {}) {
    if (!API_URL) {
