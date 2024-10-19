@@ -13,19 +13,19 @@ const TaskTabs: React.FC<TaskTabsProps> = ({ activeTab }) => {
    ];
 
    return (
-      <div className="mb-4">
-         <div className="border-b border-gray-200">
-            <nav className="-mb-px flex" aria-label="Tabs">
+      <div className="mb-8">
+         <div className="">
+            <nav className="-mb-px flex gap-2" aria-label="Tabs">
                {tabs.map((tab) => (
                   <Link
                      key={tab.name}
                      href={tab.href}
                      className={`
-                w-1/4 py-2 px-1 text-center border-b-2 font-medium text-sm
+                min-w-24 py-2 px-1 text-center border-b-2 font-medium text-sm border-gray-200 rounded-md
                 ${
                    activeTab === tab.status
-                      ? "border-blue-500 text-blue-600"
-                      : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                      ? "!border-blue-500 bg-gray-200"
+                      : " text-gray-500 hover:text-gray-700 hover:border-gray-300"
                 }
               `}
                   >
