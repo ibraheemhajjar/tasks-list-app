@@ -6,6 +6,10 @@ type TaskItemProps = {
 };
 
 const TaskItem: React.FC<TaskItemProps> = React.memo(({ task }) => {
+   const formattedDate = React.useMemo(() => {
+      return new Date(task.createdAt).toLocaleDateString();
+   }, [task.createdAt]);
+
    return (
       <li className="p-4 bg-white shadow-md rounded-lg mb-4">
          <h3 className="text-lg font-semibold mb-2">{task.title}</h3>
@@ -18,7 +22,7 @@ const TaskItem: React.FC<TaskItemProps> = React.memo(({ task }) => {
             >
                {task.status}
             </span>
-            <span className="text-gray-500">{new Date(task.createdAt).toLocaleDateString()}</span>
+            <span className="text-gray-500">{formattedDate}</span>
          </div>
          <div className="mt-2 text-sm text-gray-500">
             <span className="mr-4">Type: {task.type}</span>

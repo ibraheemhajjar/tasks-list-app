@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useCallback, useMemo } from "react";
-import { Task } from "@/app/types";
-import { TaskList } from "@/app/components/Task";
+import { Task, SortDirection } from "@/app/types";
+import TaskList from "./TaskList";
 import SortDropdown from "../common/SortDropdown";
 
 type TaskListClientProps = {
@@ -9,10 +9,10 @@ type TaskListClientProps = {
 };
 
 export default function TaskListClient({ initialTasks }: TaskListClientProps) {
-   const [tasks, setTasks] = useState(initialTasks);
-   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
+   const [tasks] = useState(initialTasks);
+   const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
 
-   const sortTasksBy = useCallback((tasksToSort: Task[], direction: "asc" | "desc") => {
+   const sortTasksBy = useCallback((tasksToSort: Task[], direction: SortDirection) => {
       return [...tasksToSort].sort((a, b) => {
          if (direction === "asc") {
             return a.title.localeCompare(b.title);
@@ -24,7 +24,7 @@ export default function TaskListClient({ initialTasks }: TaskListClientProps) {
 
    const sortedTasks = useMemo(() => sortTasksBy(tasks, sortDirection), [tasks, sortDirection, sortTasksBy]);
 
-   const handleSort = useCallback((direction: "asc" | "desc") => {
+   const handleSort = useCallback((direction: SortDirection) => {
       setSortDirection(direction);
    }, []);
 
