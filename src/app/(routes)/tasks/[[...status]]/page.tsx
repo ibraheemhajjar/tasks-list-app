@@ -2,7 +2,6 @@ import { Suspense } from "react";
 import { fetchTasks } from "@/app/lib/fetchTasks";
 import { FilterFindManyTaskInput } from "@/app/types";
 import TaskListClient from "@/app/components/Task/TaskListClient";
-import Navigation from "@/app/components/common/Navigation";
 import TaskTabs from "@/app/components/Task/TaskTabs";
 import LoadingSpinner from "@/app/components/common/LoadingSpinner";
 import ErrorMessage from "@/app/components/common/ErrorMessage";
@@ -18,8 +17,7 @@ export default function TasksPage({ params }: { params: { status?: string[] } })
    const status = urlStatus !== "all" ? statusMapping[urlStatus] || urlStatus.toUpperCase() : undefined;
 
    return (
-      <div className="container mx-auto p-4 w-screen md:w-4/5 lg:w-[60rem]">
-         <Navigation />
+      <div className="w-full">
          <TaskTabs activeTab={urlStatus} />
          <Suspense fallback={<LoadingSpinner />}>
             <TaskListContent status={status} />

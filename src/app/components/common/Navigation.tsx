@@ -22,7 +22,7 @@ const Navigation = () => {
    const pathname = usePathname();
 
    return (
-      <nav className="mb-10">
+      <nav className="my-10 w-full">
          <ul className="flex gap-4">
             {NAV_ARRAY.map((navItem, index) => {
                const isActive = navItem.href === "/" ? pathname === "/" : pathname.startsWith(navItem.href);

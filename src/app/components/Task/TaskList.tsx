@@ -8,7 +8,7 @@ type TaskListProps = {
 
 const TaskList: React.FC<TaskListProps> = React.memo(({ tasks }) => {
    return (
-      <ul className="space-y-4">
+      <ul className="w-full">
          {tasks.map((task) => (
             <TaskItem key={task._id} task={task} />
          ))}

@@ -21,7 +21,7 @@ const TaskTabs: React.FC<TaskTabsProps> = ({ activeTab }) => {
                      key={tab.name}
                      href={tab.href}
                      className={`
-                min-w-24 py-2 px-1 text-center border-b-2 font-medium text-sm border-gray-200 rounded-md
+                min-w-28 py-2 px-1 text-center border-b-2 font-medium text-sm border-gray-200 rounded-md
                 ${
                    activeTab === tab.status
                       ? "!border-blue-500 bg-gray-200"
