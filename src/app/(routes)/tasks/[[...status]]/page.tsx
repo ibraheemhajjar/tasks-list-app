@@ -1,11 +1,11 @@
 import { Suspense } from "react";
 import { fetchTasks } from "@/app/lib/fetchTasks";
 import { FilterFindManyTaskInput } from "@/app/types/task";
-import TaskListClient from "@/app/components/TaskListClient";
-import Navigation from "@/app/components/Navigation";
-import TaskTabs from "@/app/components/TaskTabs";
-import LoadingSpinner from "@/app/components/LoadingSpinner";
-import ErrorMessage from "@/app/components/ErrorMessage";
+import TaskListClient from "@/app/components/Task/TaskListClient";
+import Navigation from "@/app/components/common/Navigation";
+import TaskTabs from "@/app/components/Task/TaskTabs";
+import LoadingSpinner from "@/app/components/common/LoadingSpinner";
+import ErrorMessage from "@/app/components/common/ErrorMessage";
 
 const statusMapping: { [key: string]: string } = {
    new: "NEW",

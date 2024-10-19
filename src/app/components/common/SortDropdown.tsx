@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useCallback } from "react";
 import useClickOutside from "@/app/hooks/useClickOutside";
 
 type SortOption = "asc" | "desc";
@@ -8,18 +8,21 @@ type SortDropdownProps = {
    currentDirection: SortOption;
 };
 
-const SortDropdown: React.FC<SortDropdownProps> = ({ onSort, currentDirection }) => {
-   const [isOpen, setIsOpen] = useState(false);
-   const dropdownRef = useRef<HTMLDivElement>(null);
+const SortDropdown: React.FC<SortDropdownProps> = React.memo(({ onSort, currentDirection }) => {
+   const [isOpen, setIsOpen] = React.useState(false);
+   const dropdownRef = React.useRef<HTMLDivElement>(null);
 
    useClickOutside(dropdownRef, () => setIsOpen(false));
 
-   const toggleDropdown = () => setIsOpen(!isOpen);
+   const toggleDropdown = useCallback(() => setIsOpen((prev) => !prev), []);
 
-   const handleSort = (option: SortOption) => {
-      onSort(option);
-      setIsOpen(false);
-   };
+   const handleSort = useCallback(
+      (option: SortOption) => {
+         onSort(option);
+         setIsOpen(false);
+      },
+      [onSort]
+   );
 
    return (
       <div className="relative inline-block text-left" ref={dropdownRef}>
@@ -52,33 +55,31 @@ const SortDropdown: React.FC<SortDropdownProps> = ({ onSort, currentDirection })
          {isOpen && (
             <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="sort-menu">
-                  <label className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">
-                     <input
-                        type="radio"
-                        name="sort-option"
-                        value="asc"
-                        checked={currentDirection === "asc"}
-                        onChange={() => handleSort("asc")}
-                        className="mr-2"
-                     />
+                  <button
+                     className={`${
+                        currentDirection === "asc" ? "bg-gray-100 text-gray-900" : "text-gray-700"
+                     } block w-full text-left px-4 py-2 text-sm`}
+                     role="menuitem"
+                     onClick={() => handleSort("asc")}
+                  >
                      Ascending
-                  </label>
-                  <label className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">
-                     <input
-                        type="radio"
-                        name="sort-option"
-                        value="desc"
-                        checked={currentDirection === "desc"}
-                        onChange={() => handleSort("desc")}
-                        className="mr-2"
-                     />
+                  </button>
+                  <button
+                     className={`${
+                        currentDirection === "desc" ? "bg-gray-100 text-gray-900" : "text-gray-700"
+                     } block w-full text-left px-4 py-2 text-sm`}
+                     role="menuitem"
+                     onClick={() => handleSort("desc")}
+                  >
                      Descending
-                  </label>
+                  </button>
                </div>
             </div>
          )}
       </div>
    );
-};
+});
+
+SortDropdown.displayName = "SortDropdown";
 
 export default SortDropdown;
