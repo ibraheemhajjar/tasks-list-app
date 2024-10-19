@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { fetchTasks } from "@/app/lib/fetchTasks";
-import { FilterFindManyTaskInput } from "@/app/types/task";
+import { FilterFindManyTaskInput } from "@/app/types";
 import TaskListClient from "@/app/components/Task/TaskListClient";
 import Navigation from "@/app/components/common/Navigation";
 import TaskTabs from "@/app/components/Task/TaskTabs";

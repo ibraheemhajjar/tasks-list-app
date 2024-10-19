@@ -1,4 +1,4 @@
-import { TaskListResponse, FilterFindManyTaskInput } from "@/app/types/task";
+import { TaskListResponse, FilterFindManyTaskInput } from "../types";
 import { GET_TASKS } from "./graphql/queries";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;

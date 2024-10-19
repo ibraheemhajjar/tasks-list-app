@@ -12,7 +12,3 @@ export type Task = {
    number_of_likes: number;
    type: string;
 };
-
-export type TaskListResponse = {
-   taskList: Task[];
-};

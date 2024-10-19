@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useCallback, useMemo } from "react";
-import { Task } from "./task.type";
+import { Task } from "@/app/types";
 import { TaskList } from "@/app/components/Task";
 import SortDropdown from "../common/SortDropdown";
 
