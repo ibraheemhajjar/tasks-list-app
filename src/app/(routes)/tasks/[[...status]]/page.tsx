@@ -18,7 +18,7 @@ export default function TasksPage({ params }: { params: { status?: string[] } })
    const status = urlStatus !== "all" ? statusMapping[urlStatus] || urlStatus.toUpperCase() : undefined;
 
    return (
-      <div className="container mx-auto p-4">
+      <div className="container mx-auto p-4 w-screen md:w-4/5 lg:w-[60rem]">
          <Navigation />
          <TaskTabs activeTab={urlStatus} />
          <Suspense fallback={<LoadingSpinner />}>
